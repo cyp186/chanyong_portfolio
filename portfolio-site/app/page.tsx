@@ -58,7 +58,7 @@ export default function Home() {
       <div className="ambient ambient-one" aria-hidden="true" />
       <div className="ambient ambient-two" aria-hidden="true" />
 
-      <nav className="site-nav" aria-label="Main navigation">
+      <nav className="site-nav reveal" aria-label="Main navigation">
         <a className="wordmark" href="#top" aria-label="Chanyong, home">
           CY<span>.</span>
         </a>
@@ -105,7 +105,7 @@ export default function Home() {
             </a>
           </div>
         </div>
-        <div className="hero-index" aria-hidden="true">
+        <div className="hero-index reveal delay-three" aria-hidden="true">
           <span>FULL-STACK</span>
           <span>AI SYSTEMS</span>
           <span>DATA PRODUCTS</span>
@@ -113,7 +113,7 @@ export default function Home() {
       </section>
 
       <section className="projects section-shell" id="work">
-        <div className="section-heading">
+        <div className="section-heading reveal">
           <div>
             <p className="kicker">Selected work</p>
             <h2>Projects built with purpose.</h2>
@@ -125,9 +125,9 @@ export default function Home() {
         </div>
 
         <div className="project-list">
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <article
-              className={`project-card project-${project.accent}`}
+              className={`project-card project-${project.accent} reveal delay-${["one", "two", "three"][index]}`}
               key={project.title}
             >
               <div className="project-topline">
@@ -163,14 +163,14 @@ export default function Home() {
       </section>
 
       <section className="about section-shell" id="about">
-        <div className="about-intro">
+        <div className="about-intro reveal">
           <p className="kicker">How I work</p>
           <h2>
             Curious about the details.
             <span>Focused on the outcome.</span>
           </h2>
         </div>
-        <div className="about-copy">
+        <div className="about-copy reveal delay-one">
           <p>
             Through university and independent projects, I’ve worked across the
             full development lifecycle—from shaping requirements and designing
@@ -184,8 +184,11 @@ export default function Home() {
         </div>
 
         <div className="capabilities">
-          {capabilities.map((capability) => (
-            <div className="capability" key={capability.label}>
+          {capabilities.map((capability, index) => (
+            <div
+              className={`capability reveal delay-${["one", "two", "three"][index]}`}
+              key={capability.label}
+            >
               <span>{capability.label}</span>
               <p>{capability.items}</p>
             </div>
@@ -194,9 +197,11 @@ export default function Home() {
       </section>
 
       <section className="contact section-shell" id="contact">
-        <p className="kicker">Let’s connect</p>
-        <h2>Have an opportunity or an idea worth building?</h2>
-        <div className="contact-bottom">
+        <p className="kicker reveal">Let’s connect</p>
+        <h2 className="reveal delay-one">
+          Have an opportunity or an idea worth building?
+        </h2>
+        <div className="contact-bottom reveal delay-two">
           <p>I’d love to hear about it.</p>
           <a className="email-link" href="mailto:chanyongpark199@gmail.com">
             chanyongpark199@gmail.com <span aria-hidden="true">↗</span>
@@ -204,7 +209,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="site-footer section-shell">
+      <footer className="site-footer section-shell reveal">
         <p>© 2026 Chanyong. Built with care.</p>
         <div>
           <a
