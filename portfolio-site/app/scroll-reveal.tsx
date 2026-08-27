@@ -1,16 +1,21 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 export function ScrollReveal() {
+  const pathname = usePathname();
+
   useEffect(() => {
-    const items = document.querySelectorAll(".reveal");
+    const items = document.querySelectorAll(".reveal:not(.is-visible)");
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
     if (reduceMotion) {
-      items.forEach((item) => item.classList.add("is-visible"));
+      document.querySelectorAll(".reveal").forEach((item) => {
+        item.classList.add("is-visible");
+      });
       return;
     }
 
@@ -27,7 +32,7 @@ export function ScrollReveal() {
 
     items.forEach((item) => observer.observe(item));
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
 
   return null;
 }

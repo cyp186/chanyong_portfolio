@@ -1,41 +1,6 @@
-const projects = [
-  {
-    number: "01",
-    title: "RentMate",
-    eyebrow: "Property management platform",
-    description:
-      "A full-stack rental management system that brings maintenance requests, property bookings and tenant communication into one reliable workflow.",
-    contribution:
-      "Led delivery as Scrum Master, built core React experiences and strengthened the application with automated testing and CI/CD.",
-    stack: ["React", "Spring Boot", "Java 21", "Neon", "Docker"],
-    href: "https://github.com/cyp186/rentmate_property_management",
-    accent: "lime",
-  },
-  {
-    number: "02",
-    title: "AI Business Assistant",
-    eyebrow: "AI-assisted enquiry management",
-    description:
-      "A secure workspace for small businesses to manage enquiries and draft knowledge-grounded responses with selectable tone and human approval.",
-    contribution:
-      "Designed role-based data isolation, email verification, analytics and a modular API architecture around an approval-first AI workflow.",
-    stack: ["React", "FastAPI", "PostgreSQL", "OpenAI", "Alembic"],
-    href: "https://github.com/cyp186/ai-sme-assistant",
-    accent: "violet",
-  },
-  {
-    number: "03",
-    title: "Atelier Clothing Recommendation",
-    eyebrow: "Flask data application",
-    description:
-      "A full-stack NLP application that predicts whether a customer would recommend a clothing item based on review text.",
-    contribution:
-      "Built database-backed filters, aggregate queries, and adaptive visualisations.",
-    stack: ["Python", "Flask", "SQLite", "HTML", "CSS"],
-    href: "https://github.com/cyp186/atelier_clothing_recommendation",
-    accent: "cyan",
-  },
-];
+import { SiteFooter } from "./site-footer";
+import { SiteNav } from "./site-nav";
+import { projects } from "../lib/projects";
 
 const capabilities = [
   {
@@ -58,28 +23,11 @@ export default function Home() {
       <div className="ambient ambient-one" aria-hidden="true" />
       <div className="ambient ambient-two" aria-hidden="true" />
 
-      <nav className="site-nav reveal" aria-label="Main navigation">
-        <a className="wordmark" href="#top" aria-label="Chanyong, home">
-          CY<span>.</span>
-        </a>
-        <div className="nav-links">
-          <a href="#work">Work</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-        </div>
-        <a
-          className="nav-cta"
-          href="https://github.com/cyp186"
-          target="_blank"
-          rel="noreferrer"
-        >
-          GitHub <span aria-hidden="true">↗</span>
-        </a>
-      </nav>
+      <SiteNav home />
 
       <section className="hero section-shell" id="top">
         <div className="availability reveal">
-          <span className="status-dot" /> Software Engineering / Data Science 
+          <span className="status-dot" /> Software Engineering / Data Science
         </div>
         <h1 className="hero-title reveal delay-one">
           I build software that turns
@@ -128,7 +76,7 @@ export default function Home() {
           {projects.map((project, index) => (
             <article
               className={`project-card project-${project.accent} reveal delay-${["one", "two", "three"][index]}`}
-              key={project.title}
+              key={project.slug}
             >
               <div className="project-topline">
                 <span>{project.number}</span>
@@ -138,6 +86,12 @@ export default function Home() {
                 <div>
                   <h3>{project.title}</h3>
                   <p className="project-description">{project.description}</p>
+                  <a
+                    className="button button-secondary project-shots-button"
+                    href={`/projects/${project.slug}`}
+                  >
+                    View screenshots
+                  </a>
                 </div>
                 <a
                   className="project-link"
@@ -209,26 +163,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="site-footer section-shell reveal">
-        <p>© 2026 Chanyong. Built with care.</p>
-        <div>
-          <a
-            href="https://www.linkedin.com/in/chanyong-park-4b2416355/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            LinkedIn
-          </a>
-          <a
-            href="https://github.com/cyp186"
-            target="_blank"
-            rel="noreferrer"
-          >
-            GitHub
-          </a>
-          <a href="#top">Back to top ↑</a>
-        </div>
-      </footer>
+      <SiteFooter home />
     </main>
   );
 }
